@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1D6F42">
+    <title>Fênix do Oeste - Calculadora</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 10px;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #1D6F42;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .section {
+            padding: 15px;
+        }
+        
+        .section-title {
+            color: white;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .nivel1 { background: #70AD47; }
+        .nivel2 { background: #ED7D31; }
+        .incentivo { background: #4472C4; }
+        
+        .item {
+            display: grid;
+            grid-template-columns: 2fr 1.2fr 1fr 1.2fr;
+            gap: 8px;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+        
+        .item-header {
+            font-weight: bold;
+            font-size: 12px;
+            color: #1D6F42;
+            background: #f0f0f0;
+        }
+        
+        .item-nome {
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .item-valor {
+            font-size: 11px;
+            color: #666;
+            text-align: center;
+        }
+        
+        .item-qtd {
+            text-align: center;
+        }
+        
+        .item-qtd input {
+            width: 100%;
+            padding: 10px 5px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0066cc;
+            border: 2px solid #FFC107;
+            background: #FFF9C4;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .item-total {
+            font-weight: bold;
+            font-size: 13px;
+            text-align: right;
+            color: #1D6F42;
+        }
+        
+        .total-section {
+            background: #A9D08E;
+            padding: 15px;
+            margin-top: 5px;
+        }
+        
+        .total-section.nivel2-total {
+            background: #F4B084;
+        }
+        
+        .total-section.incentivo-total {
+            background: #8EA9DB;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .total-final {
+            background: linear-gradient(135deg, #1D6F42, #2a9d5f);
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        
+        .total-final-label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .total-final-valor {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        .btn-reset {
+            width: 100%;
+            padding: 15px;
+            margin-top: 15px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .incentivo-info {
+            background: #E3F2FD;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 13px;
+        }
+        
+        .incentivo-info div {
+            text-align: center;
+        }
+        
+        .incentivo-info strong {
+            display: block;
+            font-size: 16px;
+            color: #4472C4;
+            margin-top: 5px;
+        }
+        
+        .regra {
+            background: #E3F2FD;
+            padding: 8px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #4472C4;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🦅 FÊNIX DO OESTE</h1>
+            <p>Calculadora de Comissões</p>
+        </div>
+        
+        <!-- NÍVEL 1 -->
+        <div class="section">
+            <div class="section-title nivel1">NÍVEL 1 (1-24 unidades)</div>
+            <div class="item item-header">
+                <div>Modelo</div>
+                <div>Valor Unit.</div>
+                <div>Qtd</div>
+                <div>Total</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A6x</div>
+                <div class="item-valor">R$ 1,00</div>
+                <div class="item-qtd"><input type="number" id="n1_0" value="0" min="0" data-valor="1"></div>
+                <div class="item-total" id="total_n1_0">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A40/A5</div>
+                <div class="item-valor">R$ 8,00</div>
+                <div class="item-qtd"><input type="number" id="n1_1" value="0" min="0" data-valor="8"></div>
+                <div class="item-total" id="total_n1_1">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A58</div>
+                <div class="item-valor">R$ 16,00</div>
+                <div class="item-qtd"><input type="number" id="n1_2" value="0" min="0" data-valor="16"></div>
+                <div class="item-total" id="total_n1_2">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A60/A79</div>
+                <div class="item-valor">R$ 32,00</div>
+                <div class="item-qtd"><input type="number" id="n1_3" value="0" min="0" data-valor="32"></div>
+                <div class="item-total" id="total_n1_3">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A5 (5G)</div>
+                <div class="item-valor">R$ 40,00</div>
+                <div class="item-qtd"><input type="number" id="n1_4" value="0" min="0" data-valor="40"></div>
+                <div class="item-total" id="total_n1_4">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A5 Pro</div>
+                <div class="item-valor">R$ 56,00</div>
+                <div class="item-qtd"><input type="number" id="n1_5" value="0" min="0" data-valor="56" data-reno="true"></div>
+                <div class="item-total" id="total_n1_5">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">Reno 13F/14F</div>
+                <div class="item-valor">R$ 144,00</div>
+                <div class="item-qtd"><input type="number" id="n1_6" value="0" min="0" data-valor="144" data-reno="true"></div>
+                <div class="item-total" id="total_n1_6">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">Reno 13/14</div>
+                <div class="item-valor">R$ 160,00</div>
+                <div class="item-qtd"><input type="number" id="n1_7" value="0" min="0" data-valor="160" data-reno="true"></div>
+                <div class="item-total" id="total_n1_7">R$ 0</div>
+            </div>
+            
+            <div class="total-section">
+                <div class="total-row">
+                    <span>TOTAL NÍVEL 1</span>
+                    <span id="total_nivel1">R$ 0,00</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NÍVEL 2 -->
+        <div class="section">
+            <div class="section-title nivel2">NÍVEL 2 (25+ unidades)</div>
+            <div class="item item-header">
+                <div>Modelo</div>
+                <div>Valor Unit.</div>
+                <div>Qtd</div>
+                <div>Total</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A6x</div>
+                <div class="item-valor">R$ 5,00</div>
+                <div class="item-qtd"><input type="number" id="n2_0" value="0" min="0" data-valor="5"></div>
+                <div class="item-total" id="total_n2_0">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A40/A5</div>
+                <div class="item-valor">R$ 10,00</div>
+                <div class="item-qtd"><input type="number" id="n2_1" value="0" min="0" data-valor="10"></div>
+                <div class="item-total" id="total_n2_1">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A58</div>
+                <div class="item-valor">R$ 20,00</div>
+                <div class="item-qtd"><input type="number" id="n2_2" value="0" min="0" data-valor="20"></div>
+                <div class="item-total" id="total_n2_2">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A60/A79</div>
+                <div class="item-valor">R$ 40,00</div>
+                <div class="item-qtd"><input type="number" id="n2_3" value="0" min="0" data-valor="40"></div>
+                <div class="item-total" id="total_n2_3">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A5 (5G)</div>
+                <div class="item-valor">R$ 50,00</div>
+                <div class="item-qtd"><input type="number" id="n2_4" value="0" min="0" data-valor="50"></div>
+                <div class="item-total" id="total_n2_4">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">A5 Pro</div>
+                <div class="item-valor">R$ 70,00</div>
+                <div class="item-qtd"><input type="number" id="n2_5" value="0" min="0" data-valor="70" data-reno="true"></div>
+                <div class="item-total" id="total_n2_5">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">Reno 13F/14F</div>
+                <div class="item-valor">R$ 180,00</div>
+                <div class="item-qtd"><input type="number" id="n2_6" value="0" min="0" data-valor="180" data-reno="true"></div>
+                <div class="item-total" id="total_n2_6">R$ 0</div>
+            </div>
+            
+            <div class="item">
+                <div class="item-nome">Reno 13/14</div>
+                <div class="item-valor">R$ 200,00</div>
+                <div class="item-qtd"><input type="number" id="n2_7" value="0" min="0" data-valor="200" data-reno="true"></div>
+                <div class="item-total" id="total_n2_7">R$ 0</div>
+            </div>
+            
+            <div class="total-section nivel2-total">
+                <div class="total-row">
+                    <span>TOTAL NÍVEL 2</span>
+                    <span id="total_nivel2">R$ 0,00</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- INCENTIVO -->
+        <div class="section">
+            <div class="section-title incentivo">🎁 INCENTIVO ADICIONAL</div>
+            
+            <div class="incentivo-info">
+                <div>
+                    Total A5Pro+Reno
+                    <strong id="total_reno">0</strong>
+                </div>
+                <div>
+                    Valor/unidade
+                    <strong id="valor_por_unidade">R$ 0</strong>
+                </div>
+            </div>
+            
+            <div class="regra">
+                6-10 unidades = R$50/un | 11+ unidades = R$100/un
+            </div>
+            
+            <div class="total-section incentivo-total">
+                <div class="total-row">
+                    <span>TOTAL INCENTIVO</span>
+                    <span id="total_incentivo">R$ 0,00</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TOTAL FINAL -->
+        <div class="section">
+            <div class="total-final">
+                <div class="total-final-label">TOTAL A RECEBER</div>
+                <div class="total-final-valor" id="total_geral">R$ 0,00</div>
+            </div>
+            
+            <button class="btn-reset" onclick="resetar()">🔄 ZERAR TUDO</button>
+        </div>
+    </div>
+    
+    <script>
+        function formatarMoeda(valor) {
+            return 'R$ ' + valor.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+        
+        function calcular() {
+            let totalN1 = 0;
+            let totalN2 = 0;
+            let totalReno = 0;
+            
+            // Calcular Nível 1
+            for (let i = 0; i < 8; i++) {
+                const input = document.getElementById(n1_${i});
+                const qtd = parseInt(input.value) || 0;
+                const valor = parseFloat(input.dataset.valor);
+                const total = qtd * valor;
+                
+                document.getElementById(total_n1_${i}).textContent = formatarMoeda(total);
+                totalN1 += total;
+                
+                if (input.dataset.reno === 'true') {
+                    totalReno += qtd;
+                }
+            }
+            
+            // Calcular Nível 2
+            for (let i = 0; i < 8; i++) {
+                const input = document.getElementById(n2_${i});
+                const qtd = parseInt(input.value) || 0;
+                const valor = parseFloat(input.dataset.valor);
+                const total = qtd * valor;
+                
+                document.getElementById(total_n2_${i}).textContent = formatarMoeda(total);
+                totalN2 += total;
+                
+                if (input.dataset.reno === 'true') {
+                    totalReno += qtd;
+                }
+            }
+            
+            // Calcular Incentivo
+            let valorPorUnidade = 0;
+            if (totalReno >= 11) {
+                valorPorUnidade = 100;
+            } else if (totalReno >= 6) {
+                valorPorUnidade = 50;
+            }
+            
+            const totalIncentivo = totalReno * valorPorUnidade;
+            
+            // Atualizar displays
+            document.getElementById('total_nivel1').textContent = formatarMoeda(totalN1);
+            document.getElementById('total_nivel2').textContent = formatarMoeda(totalN2);
+            document.getElementById('total_reno').textContent = totalReno;
+            document.getElementById('valor_por_unidade').textContent = formatarMoeda(valorPorUnidade);
+            document.getElementById('total_incentivo').textContent = formatarMoeda(totalIncentivo);
+            
+            const totalGeral = totalN1 + totalN2 + totalIncentivo;
+            document.getElementById('total_geral').textContent = formatarMoeda(totalGeral);
+        }
+        
+        function resetar() {
+            if (confirm('Deseja zerar todos os valores?')) {
+                const inputs = document.querySelectorAll('input[type="number"]');
+                inputs.forEach(input => input.value = 0);
+                calcular();
+            }
+        }
+        
+        // Adicionar evento de input a todos os campos
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('input', calcular);
+            input.addEventListener('change', calcular);
+        });
+        
+        // Calcular ao carregar
+        calcular();
+    </script>
+</body>
+</html>
