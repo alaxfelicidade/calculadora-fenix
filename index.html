@@ -410,12 +410,12 @@
             
             // Calcular Nível 1
             for (let i = 0; i < 8; i++) {
-                const input = document.getElementById(n1_${i});
+                const input = document.getElementById(`n1_${i}`);
                 const qtd = parseInt(input.value) || 0;
                 const valor = parseFloat(input.dataset.valor);
                 const total = qtd * valor;
                 
-                document.getElementById(total_n1_${i}).textContent = formatarMoeda(total);
+                document.getElementById(`total_n1_${i}`).textContent = formatarMoeda(total);
                 totalN1 += total;
                 
                 if (input.dataset.reno === 'true') {
@@ -425,12 +425,12 @@
             
             // Calcular Nível 2
             for (let i = 0; i < 8; i++) {
-                const input = document.getElementById(n2_${i});
+                const input = document.getElementById(`n2_${i}`);
                 const qtd = parseInt(input.value) || 0;
                 const valor = parseFloat(input.dataset.valor);
                 const total = qtd * valor;
                 
-                document.getElementById(total_n2_${i}).textContent = formatarMoeda(total);
+                document.getElementById(`total_n2_${i}`).textContent = formatarMoeda(total);
                 totalN2 += total;
                 
                 if (input.dataset.reno === 'true') {
