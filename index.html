@@ -3,62 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#1D6F42">
 <title>Fênix do Oeste - Calculadora</title>
-<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2921/2921226.png">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
     font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
     background:#f5f5f5;
     padding:10px;
-    -webkit-user-select:none;
-    user-select:none;
 }
+
 .container{
     max-width:500px;
     margin:0 auto;
-    background:white;
+    background:#fff;
     border-radius:12px;
     box-shadow:0 2px 10px rgba(0,0,0,.1);
     overflow:hidden;
 }
+
 .header{
     background:#1D6F42;
-    color:white;
+    color:#fff;
     padding:20px;
     text-align:center;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
 }
 
-}
 .header h1{
     font-size:24px;
     font-weight:bold;
     margin-bottom:5px;
 }
+
 .header p{
     font-size:14px;
     opacity:.9;
 }
-.section{padding:15px}
+
+.section{
+    padding:15px;
+}
+
 .section-title{
-    color:white;
+    color:#fff;
     padding:12px;
     font-weight:bold;
     font-size:16px;
     text-align:center;
     margin-bottom:10px;
 }
+
 .nivel1{background:#70AD47}
 .nivel2{background:#ED7D31}
 .incentivo{background:#4472C4}
+
 .canal-box{
     background:#E8F5E9;
     border:2px solid #1D6F42;
@@ -66,6 +66,7 @@ body{
     padding:12px;
     margin-bottom:15px;
 }
+
 .canal-box label{
     display:block;
     font-size:13px;
@@ -73,6 +74,7 @@ body{
     color:#1D6F42;
     margin-bottom:6px;
 }
+
 .canal-box select{
     width:100%;
     padding:12px;
@@ -80,9 +82,10 @@ body{
     font-weight:bold;
     border:2px solid #1D6F42;
     border-radius:6px;
-    background:white;
+    background:#fff;
     color:#1D6F42;
 }
+
 .status-nivel{
     background:#FFF3CD;
     border:1px solid #FFC107;
@@ -94,12 +97,14 @@ body{
     font-weight:bold;
     color:#856404;
 }
+
 .status-nivel strong{
     display:block;
     font-size:22px;
     margin-top:5px;
     color:#1D6F42;
 }
+
 .item{
     display:grid;
     grid-template-columns:2fr 1.2fr 1fr 1.2fr;
@@ -108,22 +113,27 @@ body{
     border-bottom:1px solid #eee;
     align-items:center;
 }
+
 .item-header{
     font-weight:bold;
     font-size:12px;
     color:#1D6F42;
     background:#f0f0f0;
 }
+
 .item-nome{
     font-weight:600;
     font-size:13px;
 }
+
 .item-valor{
     font-size:11px;
     color:#666;
     text-align:center;
 }
+
 .item-qtd{text-align:center}
+
 .item-qtd input{
     width:100%;
     padding:10px 5px;
@@ -135,18 +145,24 @@ body{
     border-radius:6px;
     text-align:center;
 }
+
 .item-total{
     font-weight:bold;
     font-size:13px;
     text-align:right;
     color:#1D6F42;
 }
+
 .total-section{
     background:#A9D08E;
     padding:15px;
     margin-top:5px;
 }
-.total-section.incentivo-total{background:#8EA9DB}
+
+.total-section.incentivo-total{
+    background:#8EA9DB;
+}
+
 .total-row{
     display:flex;
     justify-content:space-between;
@@ -154,52 +170,40 @@ body{
     font-weight:bold;
     font-size:16px;
 }
+
 .total-final{
     background:linear-gradient(135deg,#1D6F42,#2a9d5f);
-    color:white;
+    color:#fff;
     padding:20px;
     margin-top:20px;
     text-align:center;
     border-radius:8px;
 }
+
 .total-final-label{
     font-size:16px;
     margin-bottom:10px;
     opacity:.9;
 }
+
 .total-final-valor{
     font-size:32px;
     font-weight:bold;
 }
+
 .btn-reset{
     width:100%;
     padding:15px;
     margin-top:15px;
     background:#dc3545;
-    color:white;
+    color:#fff;
     border:none;
     border-radius:8px;
     font-size:16px;
     font-weight:bold;
     cursor:pointer;
 }
-.incentivo-info{
-    background:#E3F2FD;
-    padding:12px;
-    margin:10px 0;
-    border-radius:6px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    font-size:13px;
-}
-.incentivo-info div{text-align:center}
-.incentivo-info strong{
-    display:block;
-    font-size:16px;
-    color:#4472C4;
-    margin-top:5px;
-}
+
 .regra{
     background:#E3F2FD;
     padding:8px;
@@ -211,21 +215,45 @@ body{
     font-style:italic;
     line-height:1.5;
 }
+
+.incentivo-info{
+    background:#E3F2FD;
+    padding:12px;
+    margin:10px 0;
+    border-radius:6px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    font-size:13px;
+}
+
+.incentivo-info div{
+    text-align:center;
+}
+
+.incentivo-info strong{
+    display:block;
+    font-size:16px;
+    color:#4472C4;
+    margin-top:5px;
+}
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
     <div class="header">
         <h1>🦅 FÊNIX DO OESTE</h1>
-        <p>Calculadora de Comissões - Abril</p>
+        <p>Calculadora de Comissões - Maio</p>
     </div>
 
     <div class="section">
 
         <div class="canal-box">
             <label for="canal">CANAL DE VENDA</label>
+
             <select id="canal">
                 <option value="varejo">Varejo</option>
                 <option value="operadora">Operadora</option>
@@ -233,12 +261,19 @@ body{
         </div>
 
         <div class="status-nivel">
-            Total de unidades com nível: <span id="total_unidades_nivel">0</span>
+            Total de unidades com nível:
+            <span id="total_unidades_nivel">0</span>
+
             <strong id="nivel_atual">NÍVEL 1</strong>
-            <div id="regra_nivel">Varejo: até 29 unidades</div>
+
+            <div id="regra_nivel">
+                Varejo: até 29 unidades
+            </div>
         </div>
 
-        <div class="section-title nivel1" id="titulo_tabela">MODELOS COM NÍVEL</div>
+        <div class="section-title nivel1" id="titulo_tabela">
+            MODELOS COM NÍVEL
+        </div>
 
         <div class="regra">
             O sistema soma todas as unidades desta tabela e aplica automaticamente o valor do Nível 1 ou Nível 2.
@@ -259,21 +294,21 @@ body{
         </div>
 
         <div class="item">
-            <div class="item-nome">A5</div>
+            <div class="item-nome">A5 (4G)</div>
             <div class="item-valor" id="valor_1">R$ 0,00</div>
             <div class="item-qtd"><input type="number" id="qtd_1" value="0" min="0"></div>
             <div class="item-total" id="total_1">R$ 0,00</div>
         </div>
 
         <div class="item">
-            <div class="item-nome">A5 (5G)</div>
+            <div class="item-nome">A5 (5G)/A6</div>
             <div class="item-valor" id="valor_2">R$ 0,00</div>
             <div class="item-qtd"><input type="number" id="qtd_2" value="0" min="0"></div>
             <div class="item-total" id="total_2">R$ 0,00</div>
         </div>
 
         <div class="item">
-            <div class="item-nome">A60/A79/A6x 5G</div>
+            <div class="item-nome">A60/A79/A6x 5G/A6K</div>
             <div class="item-valor" id="valor_3">R$ 0,00</div>
             <div class="item-qtd"><input type="number" id="qtd_3" value="0" min="0"></div>
             <div class="item-total" id="total_3">R$ 0,00</div>
@@ -307,30 +342,30 @@ body{
             <div class="item-total" id="total_7">R$ 0,00</div>
         </div>
 
+        <div class="item">
+            <div class="item-nome">A6 Pro</div>
+            <div class="item-valor" id="valor_8">R$ 0,00</div>
+            <div class="item-qtd"><input type="number" id="qtd_8" value="0" min="0"></div>
+            <div class="item-total" id="total_8">R$ 0,00</div>
+        </div>
+
         <div class="total-section">
             <div class="total-row">
                 <span>TOTAL MODELOS COM NÍVEL</span>
                 <span id="total_nivel">R$ 0,00</span>
             </div>
         </div>
+
     </div>
 
     <div class="section">
-        <div class="section-title incentivo">⭐ MODELOS SEM NÍVEL</div>
 
-        <div class="incentivo-info">
-            <div>
-                Total unidades
-                <strong id="total_fixos_unidades">0</strong>
-            </div>
-            <div>
-                Total comissão
-                <strong id="valor_fixos">R$ 0,00</strong>
-            </div>
+        <div class="section-title incentivo">
+            ⭐ MODELO SEM NÍVEL
         </div>
 
         <div class="regra">
-            A6 Pro e Find X9 Pro não sofrem influência de nível.
+            Find X9 Pro não sofre influência de nível.
         </div>
 
         <div class="item item-header">
@@ -341,17 +376,12 @@ body{
         </div>
 
         <div class="item">
-            <div class="item-nome">A6 Pro</div>
-            <div class="item-valor">R$ 140,00</div>
-            <div class="item-qtd"><input type="number" id="fixo_0" value="0" min="0" data-valor="140"></div>
-            <div class="item-total" id="total_fixo_0">R$ 0,00</div>
-        </div>
-
-        <div class="item">
             <div class="item-nome">Find X9 Pro</div>
             <div class="item-valor">R$ 400,00</div>
-            <div class="item-qtd"><input type="number" id="fixo_1" value="0" min="0" data-valor="400"></div>
-            <div class="item-total" id="total_fixo_1">R$ 0,00</div>
+            <div class="item-qtd">
+                <input type="number" id="fixo_0" value="0" min="0">
+            </div>
+            <div class="item-total" id="total_fixo_0">R$ 0,00</div>
         </div>
 
         <div class="total-section incentivo-total">
@@ -360,117 +390,159 @@ body{
                 <span id="total_fixos">R$ 0,00</span>
             </div>
         </div>
+
     </div>
 
     <div class="section">
+
         <div class="total-final">
-            <div class="total-final-label">TOTAL A RECEBER</div>
-            <div class="total-final-valor" id="total_geral">R$ 0,00</div>
+            <div class="total-final-label">
+                TOTAL A RECEBER
+            </div>
+
+            <div class="total-final-valor" id="total_geral">
+                R$ 0,00
+            </div>
         </div>
 
-        <button class="btn-reset" onclick="resetar()">🔄 ZERAR TUDO</button>
+        <button class="btn-reset" onclick="resetar()">
+            🔄 ZERAR TUDO
+        </button>
+
     </div>
 
 </div>
 
 <script>
-const valoresNivel1 = [5, 5, 40, 30, 10, 50, 180, 160];
-const valoresNivel2 = [10, 15, 50, 40, 20, 70, 180, 200];
 
-function formatarMoeda(valor) {
-    return 'R$ ' + valor.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+const valoresNivel1 = [5,5,40,30,10,50,140,160,100];
+const valoresNivel2 = [10,15,50,40,20,70,180,200,140];
+
+function formatarMoeda(valor){
+    return 'R$ ' + valor.toFixed(2).replace('.', ',');
 }
 
-function pegarQuantidade(id) {
+function pegarQuantidade(id){
     const valor = parseInt(document.getElementById(id).value);
     return isNaN(valor) || valor < 0 ? 0 : valor;
 }
 
-function calcular() {
+function calcular(){
+
     const canal = document.getElementById('canal').value;
 
     let totalUnidadesNivel = 0;
     let totalComNivel = 0;
     let totalFixos = 0;
-    let totalFixosUnidades = 0;
 
-    for (let i = 0; i < 8; i++) {
+    for(let i=0;i<9;i++){
         totalUnidadesNivel += pegarQuantidade(`qtd_${i}`);
     }
 
     let nivel = 1;
 
-    if (canal === 'varejo') {
+    if(canal === 'varejo'){
         nivel = totalUnidadesNivel >= 30 ? 2 : 1;
     }
 
-    if (canal === 'operadora') {
+    if(canal === 'operadora'){
         nivel = totalUnidadesNivel >= 20 ? 2 : 1;
     }
 
-    const tabelaValores = nivel === 1 ? valoresNivel1 : valoresNivel2;
+    const tabelaValores = nivel === 1
+        ? valoresNivel1
+        : valoresNivel2;
 
-    for (let i = 0; i < 8; i++) {
+    for(let i=0;i<9;i++){
+
         const qtd = pegarQuantidade(`qtd_${i}`);
         const valorUnitario = tabelaValores[i];
         const total = qtd * valorUnitario;
 
-        document.getElementById(`valor_${i}`).textContent = formatarMoeda(valorUnitario);
-        document.getElementById(`total_${i}`).textContent = formatarMoeda(total);
+        document.getElementById(`valor_${i}`).textContent =
+            formatarMoeda(valorUnitario);
+
+        document.getElementById(`total_${i}`).textContent =
+            formatarMoeda(total);
 
         totalComNivel += total;
     }
 
-    for (let i = 0; i < 2; i++) {
-        const input = document.getElementById(`fixo_${i}`);
-        const qtd = pegarQuantidade(`fixo_${i}`);
-        const valor = parseFloat(input.dataset.valor);
-        const total = qtd * valor;
+    const qtdFixo = pegarQuantidade('fixo_0');
+    const totalFixo = qtdFixo * 400;
 
-        document.getElementById(`total_fixo_${i}`).textContent = formatarMoeda(total);
+    document.getElementById('total_fixo_0').textContent =
+        formatarMoeda(totalFixo);
 
-        totalFixos += total;
-        totalFixosUnidades += qtd;
-    }
+    totalFixos += totalFixo;
 
-    document.getElementById('total_unidades_nivel').textContent = totalUnidadesNivel;
-    document.getElementById('nivel_atual').textContent = `NÍVEL ${nivel}`;
-    document.getElementById('total_nivel').textContent = formatarMoeda(totalComNivel);
-    document.getElementById('total_fixos').textContent = formatarMoeda(totalFixos);
-    document.getElementById('total_fixos_unidades').textContent = totalFixosUnidades;
-    document.getElementById('valor_fixos').textContent = formatarMoeda(totalFixos);
+    document.getElementById('total_unidades_nivel').textContent =
+        totalUnidadesNivel;
+
+    document.getElementById('nivel_atual').textContent =
+        `NÍVEL ${nivel}`;
+
+    document.getElementById('total_nivel').textContent =
+        formatarMoeda(totalComNivel);
+
+    document.getElementById('total_fixos').textContent =
+        formatarMoeda(totalFixos);
 
     const tituloTabela = document.getElementById('titulo_tabela');
-    tituloTabela.textContent = `MODELOS COM NÍVEL — NÍVEL ${nivel}`;
-    tituloTabela.className = nivel === 1 ? 'section-title nivel1' : 'section-title nivel2';
 
-    if (canal === 'varejo') {
+    tituloTabela.textContent =
+        `MODELOS COM NÍVEL — NÍVEL ${nivel}`;
+
+    tituloTabela.className =
+        nivel === 1
+        ? 'section-title nivel1'
+        : 'section-title nivel2';
+
+    if(canal === 'varejo'){
+
         document.getElementById('regra_nivel').textContent =
-            nivel === 1 ? 'Varejo: até 29 unidades' : 'Varejo: 30 ou mais unidades';
-    } else {
+            nivel === 1
+            ? 'Varejo: até 29 unidades'
+            : 'Varejo: 30 ou mais unidades';
+
+    }else{
+
         document.getElementById('regra_nivel').textContent =
-            nivel === 1 ? 'Operadora: até 19 unidades' : 'Operadora: 20 ou mais unidades';
+            nivel === 1
+            ? 'Operadora: até 19 unidades'
+            : 'Operadora: 20 ou mais unidades';
     }
 
     const totalGeral = totalComNivel + totalFixos;
-    document.getElementById('total_geral').textContent = formatarMoeda(totalGeral);
+
+    document.getElementById('total_geral').textContent =
+        formatarMoeda(totalGeral);
 }
 
-function resetar() {
-    if (confirm('Deseja zerar todos os valores?')) {
-        document.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
+function resetar(){
+
+    if(confirm('Deseja zerar todos os valores?')){
+
+        document.querySelectorAll('input[type="number"]').forEach(input=>{
+            input.value = 0;
+        });
+
         calcular();
     }
 }
 
-document.querySelectorAll('input[type="number"]').forEach(input => {
+document.querySelectorAll('input[type="number"]').forEach(input=>{
+
     input.addEventListener('input', calcular);
     input.addEventListener('change', calcular);
+
 });
 
-document.getElementById('canal').addEventListener('change', calcular);
+document.getElementById('canal')
+.addEventListener('change', calcular);
 
 calcular();
+
 </script>
 
 </body>
